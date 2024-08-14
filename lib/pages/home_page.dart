@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_login_navigation_route/routes.dart';
+import 'package:go_router/go_router.dart';
+import '../data/dummy/dummy_products.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -15,16 +18,34 @@ class HomePage extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: ListView.separated(
-          itemBuilder: (context, index){
-            return ListTile(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(23)),
-              tileColor: Colors.amber.shade300,
-              title: ,
-            )
-          },
-          separatorBuilder: separatorBuilder,
-          itemCount: blogs.length),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10.9, vertical: 6.0),
+        child: ListView.separated(
+            itemBuilder: (context, index){
+              return ListTile(
+                onTap: ()=> context.goNamed(Routes.product ),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(23)),
+                tileColor: Colors.amber.shade300,
+                title: Text(blogs[index].title, style: TextStyle(fontSize: textSize.scale(18), fontWeight: FontWeight.w600),),
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text('Author: ${blogs[index].author}'),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Text(
+                      blogs[index].content,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    )
+                  ],
+                ),
+              );
+            },
+            separatorBuilder: (context, state) => const Divider(),
+            itemCount: blogs.length),
+      ),
     );
   }
 }
