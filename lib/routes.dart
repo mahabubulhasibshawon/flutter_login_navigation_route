@@ -14,12 +14,12 @@ class RouterConfiguration {
       GoRoute(
           path: Routes.home,
           name: Routes.home,
-          pageBuilder: (context, state) => MaterialPage(child: HomePage())),
+          pageBuilder: (context, state) => const MaterialPage(child: HomePage())),
       GoRoute(
           path: Routes.product,
           name: Routes.product,
           pageBuilder: (context, state) =>
-              const MaterialPage(child: ProductPage())),
+              MaterialPage(child: ProductPage(object: state.extra as Map<String, String>,))),
     ],
   );
 }

@@ -21,12 +21,18 @@ class HomePage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10.9, vertical: 6.0),
         child: ListView.separated(
-            itemBuilder: (context, index){
+            itemBuilder: (context, index) {
               return ListTile(
-                onTap: ()=> context.goNamed(Routes.product ),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(23)),
+                onTap: () => context.goNamed(Routes.product, extra: {'id': blogs[index].id.toString()}),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(23)),
                 tileColor: Colors.amber.shade300,
-                title: Text(blogs[index].title, style: TextStyle(fontSize: textSize.scale(18), fontWeight: FontWeight.w600),),
+                title: Text(
+                  blogs[index].title,
+                  style: TextStyle(
+                      fontSize: textSize.scale(18),
+                      fontWeight: FontWeight.w600),
+                ),
                 subtitle: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
