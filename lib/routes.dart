@@ -12,6 +12,8 @@ class Routes {
 
 class RouterConfiguration {
   static bool isLoggedIn = false;
+  static String userName = 'Hasib';
+  static String password = '12345';
   static final router = GoRouter(
     redirect: (context, state) {
       if(isLoggedIn){
@@ -37,7 +39,7 @@ class RouterConfiguration {
       GoRoute(
           path: Routes.login,
           name: Routes.login,
-          pageBuilder: (context, state) => const MaterialPage(child: LoginPage())),
+          pageBuilder: (context, state) => MaterialPage(child: LoginPage())),
     ],
   );
 }
